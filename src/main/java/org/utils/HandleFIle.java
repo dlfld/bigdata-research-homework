@@ -23,10 +23,10 @@ public class HandleFIle {
      * @throws InterruptedException
      * @throws URISyntaxException
      */
-    public void del(String path) throws IOException, InterruptedException, URISyntaxException {
+    public void del(String path, String url) throws IOException, InterruptedException, URISyntaxException {
         //删除文件（夹）
         Configuration conf = new Configuration();//加载配置
-        FileSystem fs = FileSystem.get(new URI("hdfs://10.23.71.70:9000/"), conf, "root");//加载文件系统实例
+        FileSystem fs = FileSystem.get(new URI(url), conf, "root");//加载文件系统实例
         fs.delete(new Path(path), true);
     }
 
@@ -35,13 +35,13 @@ public class HandleFIle {
      *
      * @throws Exception
      */
-    public void upload() throws Exception {
+    public void upload(String url, String filePath, String file) throws Exception {
         Configuration conf = new Configuration();
         conf.set("dfs.client.use.datanode.hostname", "true");
-        URI uri = new URI("hdfs://10.23.71.70:9000");
+        URI uri = new URI(url);
         FileSystem fs = FileSystem.get(uri, conf, "root");
-        Path resP = new Path("/Users/dailinfeng/Desktop/小项目/HDFS/src/main/java/org/example/aaa.txt");
-        Path destP = new Path("/ex1");
+        Path resP = new Path(filePath);
+        Path destP = new Path(file);
         if (!fs.exists(destP)) {
             fs.mkdirs(destP);
         }
@@ -50,7 +50,11 @@ public class HandleFIle {
     }
 
 
-    public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-//        new HandleFIle().del("/ex1");
+    public static void main(String[] args) throws Exception {
+        new HandleFIle().del("/exp2_out", "hdfs://10.23.71.70:9000");
+        new HandleFIle().del("/exp2_out1", "hdfs://10.23.71.70:9000");
+        new HandleFIle().del("/exp2_out2", "hdfs://10.23.71.70:9000");
+        new HandleFIle().del("/exp2_out3", "hdfs://10.23.71.70:9000");
+//        new HandleFIle().upload("hdfs://10.23.71.70:9000", "/Users/dailinfeng/Documents/学习/研一上/大数据技术与应用/HDFS/src/main/java/org/example/bbb.txt", "/ex2");
     }
 }

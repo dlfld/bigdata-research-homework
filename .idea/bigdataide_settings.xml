@@ -24,7 +24,7 @@
           <option name="perProject" value="true" />
           <option name="pluginId" value="com.intellij.bigdatatools" />
           <option name="port" value="8088" />
-          <option name="uri" value="http://10.23.71.70:8088" />
+          <option name="uri" value="http://121.36.240.138:8088" />
         </ExtendedConnectionData>
       </list>
     </option>

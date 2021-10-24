@@ -1,0 +1,2 @@
+Hello Mapreduce lab
+Mapreduce is good
