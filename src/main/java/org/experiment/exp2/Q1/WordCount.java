@@ -45,11 +45,6 @@ public class WordCount {
         job.setOutputValueClass(IntWritable.class);
         FileInputFormat.addInputPath(job, new Path("hdfs://10.23.71.70:9000/exp2/"));
         FileOutputFormat.setOutputPath(job, new Path("hdfs://10.23.71.70:9000/exp2_out4/"));
-//        for(int i = 0; i < otherArgs.length - 1; ++i) {
-//            FileInputFormat.addInputPath(job, new Path(otherArgs[i]));
-//        }
-//
-//        FileOutputFormat.setOutputPath(job, new Path(otherArgs[otherArgs.length - 1]));
         System.exit(job.waitForCompletion(true)?0:1);
     }
 
